@@ -33,7 +33,7 @@ struct ContentView: View {
                                                 .yellow, .green, .mint
                                             ]))
                                             .frame(width: 200, height: 120)
-                                            .padding(3)
+                                            .padding(2.5)
                                             .overlay {
                                                 if selection == index {
                                                     RoundedRectangle(cornerRadius: 13)
@@ -98,6 +98,7 @@ struct ContentView: View {
 }
 
 struct DetailView: View {
+    @State var editing: Bool = false
     var body: some View {
         Form {
             HStack {
@@ -109,16 +110,41 @@ struct DetailView: View {
                 Spacer()
             }
             TextField("Title", text: .constant("My Wallpaper"))
-            VStack(alignment: .leading) {
-                Text("Description")
+                .disabled(!editing)
+            
+            
+            Section("Description") {
                 TextEditor(text: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."))
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.primary.opacity(editing ? 0.8 : 0.6))
                     .textEditorStyle(.plain)
                     .padding(.horizontal, -5)
+                    .font(.body)
+                    .disabled(!editing)
             }
             
-            
-            Section("Details") {Spacer()}
+//
+//            Section("Grouping") {
+//                
+//            }
+            Section("Other") {
+                Picker("Category", selection: .constant("My Category")) {
+                    Text("My Category").tag("My Category")
+                    Text("My Other Category").tag("My Other Category")
+                }
+                Toggle("Include in Shuffle", isOn: .constant(true))
+                    .disabled(!editing)
+                LabeledContent("Actions") {
+                    
+                    Menu(editing ? "Save" : "Edit", content: {
+                        if editing {
+                            Section {
+                                Button("Discard changes") {}
+                            }
+                        }
+                        Button("Delete...", systemImage: "trash", role: .destructive) {}
+                    }, primaryAction: { editing.toggle() }).controlSize(.regular)
+                }
+            }
         }
     }
 }

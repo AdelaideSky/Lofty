@@ -11,6 +11,8 @@
 		36E96EBD2C29AB9300D715CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E96EBC2C29AB9300D715CC /* ContentView.swift */; };
 		36E96EBF2C29AB9500D715CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36E96EBE2C29AB9500D715CC /* Assets.xcassets */; };
 		36E96EC22C29AB9500D715CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36E96EC12C29AB9500D715CC /* Preview Assets.xcassets */; };
+		36E96ECA2C29CB9400D715CC /* WallpaperEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E96EC92C29CB9400D715CC /* WallpaperEntries.swift */; };
+		36E96ECC2C29CC3E00D715CC /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E96ECB2C29CC3E00D715CC /* Paths.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		36E96EBE2C29AB9500D715CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36E96EC12C29AB9500D715CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		36E96EC32C29AB9500D715CC /* Lofty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lofty.entitlements; sourceTree = "<group>"; };
+		36E96EC92C29CB9400D715CC /* WallpaperEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperEntries.swift; sourceTree = "<group>"; };
+		36E96ECB2C29CC3E00D715CC /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				36E96EBE2C29AB9500D715CC /* Assets.xcassets */,
 				36E96EC32C29AB9500D715CC /* Lofty.entitlements */,
 				36E96EC02C29AB9500D715CC /* Preview Content */,
+				36E96EC92C29CB9400D715CC /* WallpaperEntries.swift */,
+				36E96ECB2C29CC3E00D715CC /* Paths.swift */,
 			);
 			path = Lofty;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			files = (
 				36E96EBD2C29AB9300D715CC /* ContentView.swift in Sources */,
 				36E96EBB2C29AB9300D715CC /* LoftyApp.swift in Sources */,
+				36E96ECC2C29CC3E00D715CC /* Paths.swift in Sources */,
+				36E96ECA2C29CB9400D715CC /* WallpaperEntries.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
