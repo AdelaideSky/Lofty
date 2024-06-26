@@ -16,70 +16,159 @@ struct ContentView: View {
             
             VStack {
                 ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 210))], spacing: 20) {
-                        ForEach(0..<10) { index in
-                            Button(action: { selection = index }) {
-                                
-                                VStack(alignment: .center) {
-                                    if #available(macOS 15.0, *) {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(MeshGradient(width: 3, height: 3, points: [
-                                                .init(0, 0), .init(0.5, 0), .init(1, 0),
-                                                .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
-                                                .init(0, 1), .init(0.5, 1), .init(1, 1)
-                                            ], colors: [
-                                                .red, .purple, .indigo,
-                                                .orange, .white, .blue,
-                                                .yellow, .green, .mint
-                                            ]))
-                                            .frame(width: 200, height: 120)
-                                            .padding(2.5)
-                                            .overlay {
-                                                if selection == index {
-                                                    RoundedRectangle(cornerRadius: 13)
-                                                        .stroke(.tint, lineWidth: 5)
+                    
+                    DisclosureGroup(isExpanded: .constant(true), content: {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 210))], spacing: 20) {
+                            ForEach(0..<7) { index in
+                                Button(action: { selection = index }) {
+                                    
+                                    VStack(alignment: .center) {
+                                        if #available(macOS 15.0, *) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(MeshGradient(width: 3, height: 3, points: [
+                                                    .init(0, 0), .init(0.5, 0), .init(1, 0),
+                                                    .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
+                                                    .init(0, 1), .init(0.5, 1), .init(1, 1)
+                                                ], colors: [
+                                                    .red, .purple, .indigo,
+                                                    .orange, .white, .blue,
+                                                    .yellow, .green, .mint
+                                                ]))
+                                                .frame(width: 200, height: 120)
+                                                .padding(2.5)
+                                                .overlay {
+                                                    if selection == index {
+                                                        RoundedRectangle(cornerRadius: 13)
+                                                            .stroke(.tint, lineWidth: 5)
+                                                    }
                                                 }
-                                            }
-                                    } else {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(.blue)
-                                            .frame(width: 200, height: 120)
-                                            .padding(3)
-                                            .overlay {
-                                                if selection == index {
-                                                    RoundedRectangle(cornerRadius: 13)
-                                                        .stroke(.tint, lineWidth: 5)
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(.blue)
+                                                .frame(width: 200, height: 120)
+                                                .padding(3)
+                                                .overlay {
+                                                    if selection == index {
+                                                        RoundedRectangle(cornerRadius: 13)
+                                                            .stroke(.tint, lineWidth: 5)
+                                                    }
                                                 }
-                                            }
+                                        }
+                                        
+                                        Text("My Wallpaper \(index+1)")
+                                            .font(.footnote).bold()
+                                            .padding(.top, 3)
+                                            .foregroundStyle(selection == index ? .primary : .secondary)
                                     }
                                     
-                                    Text("My Wallpaper \(index+1)")
-                                        .font(.caption).bold()
-                                        .padding(.top, 3)
                                 }
-                                
                             }
-                        }
-                        Button(action: {}) {
-                            VStack(alignment: .center) {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(.secondary.opacity(0.2))
-                                    .frame(width: 200, height: 120)
-                                    .padding(3)
-                                    .overlay {
-                                        Image(systemName: "plus")
-                                            .foregroundStyle(.secondary)
-                                            .font(.largeTitle)
-                                            .bold()
+                            Button(action: {}) {
+                                VStack(alignment: .center) {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(.secondary.opacity(0.2))
+                                        .frame(width: 200, height: 120)
+                                        .padding(3)
+                                        .overlay {
+                                            Image(systemName: "plus")
+                                                .foregroundStyle(.secondary)
+                                                .font(.largeTitle)
+                                                .bold()
+                                        }
+                                    Text("New...")
+                                        .font(.footnote).bold()
+                                        .padding(.top, 3)
+                                    
+                                }
+                            }
+                        }.buttonStyle(.plain)
+                            .padding(.vertical)
+                    }, label: {
+                        Text("Custom Wallpapers")
+                            .font(.headline)
+                        Menu("Options", systemImage: "ellipsis.circle") {
+                            Button("Edit") {}
+                            Button("Delete", role: .destructive) {}
+                        }.menuStyle(.borderlessButton)
+                            .labelStyle(.iconOnly)
+                            .fixedSize()
+//                            .padding(.vertical)
+//                        Divider()
+                    })
+                    DisclosureGroup("My Group", isExpanded: .constant(true)) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 210))], spacing: 20) {
+                            ForEach(7..<10) { index in
+                                Button(action: { selection = index }) {
+                                    
+                                    VStack(alignment: .center) {
+                                        if #available(macOS 15.0, *) {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(MeshGradient(width: 3, height: 3, points: [
+                                                    .init(0, 0), .init(0.5, 0), .init(1, 0),
+                                                    .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
+                                                    .init(0, 1), .init(0.5, 1), .init(1, 1)
+                                                ], colors: [
+                                                    .red, .purple, .indigo,
+                                                    .orange, .white, .blue,
+                                                    .yellow, .green, .mint
+                                                ]))
+                                                .frame(width: 200, height: 120)
+                                                .padding(2.5)
+                                                .overlay {
+                                                    if selection == index {
+                                                        RoundedRectangle(cornerRadius: 13)
+                                                            .stroke(.tint, lineWidth: 5)
+                                                    }
+                                                }
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(.blue)
+                                                .frame(width: 200, height: 120)
+                                                .padding(3)
+                                                .overlay {
+                                                    if selection == index {
+                                                        RoundedRectangle(cornerRadius: 13)
+                                                            .stroke(.tint, lineWidth: 5)
+                                                    }
+                                                }
+                                        }
+                                        
+                                        Text("My Wallpaper \(index+1)")
+                                            .font(.footnote).bold()
+                                            .padding(.top, 3)
+                                            .foregroundStyle(selection == index ? .primary : .secondary)
                                     }
-                                Text("New...")
-                                    .font(.caption).bold()
-                                    .padding(.top, 3)
-                                
+                                    
+                                }
                             }
-                        }
-                    }.buttonStyle(.plain)
+                            Button(action: {}) {
+                                VStack(alignment: .center) {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(.secondary.opacity(0.2))
+                                        .frame(width: 200, height: 120)
+                                        .padding(3)
+                                        .overlay {
+                                            Image(systemName: "plus")
+                                                .foregroundStyle(.secondary)
+                                                .font(.largeTitle)
+                                                .bold()
+                                        }
+                                    Text("New...")
+                                        .font(.footnote).bold()
+                                        .padding(.top, 3)
+                                    
+                                }
+                            }
+                        }.buttonStyle(.plain)
+                    }
                 }.contentMargins(20)
+            }.toolbar {
+                ToolbarItem {
+                    Menu("New...", systemImage: "plus") {
+                        Button("New Wallpaper", systemImage: "photo.badge.plus") {}
+                        Button("New Category", systemImage: "folder.badge.plus") {}
+                    }
+                }
             }
                 .inspector(isPresented: .init(get: {
                     selection != nil
